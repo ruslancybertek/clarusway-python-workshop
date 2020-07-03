@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, session
 
 app = Flask(__name__)
 
@@ -7,7 +7,7 @@ def index():
     return render_template('index.html')
     
 
-@app.route('/index', methods=['POST'])
+@app.route('/index', methods=['POST', 'GET'])
 def index_post():
 
     mappings = {1000: "M", 900: 'CM', 500: "D", 400: 'CD', 100: "C",
@@ -27,11 +27,11 @@ def index_post():
                 result += v * value # M *1
                 number%=k # 994 
         # "MCMXCIV"      
-    return (result)
+    return render_template('result.html', x=result)
 
-@app.route('/result', methods=['GET'])
+@app.route('/result', methods=['POST'])
 def result_get():
-    return redirect(url_for('index_post'))
+    return (index_post())
 
 
 if __name__ == '__main__':
