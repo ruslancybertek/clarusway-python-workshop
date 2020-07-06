@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for, session
+from flask import Flask, request, render_template, redirect, url_for
 
 app = Flask(__name__)
 
@@ -36,5 +36,5 @@ def result_get():
 
 if __name__ == '__main__':
     # app.run('localhost', port=5000, debug=True)
-    #  app.run(debug=True)
-    app.run('0.0.0.0', port=80)        
+     app.run(debug=True)
+    # app.run('0.0.0.0', port=80)        
